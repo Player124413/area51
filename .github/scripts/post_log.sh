@@ -30,3 +30,10 @@ CODE=$(curl -sS -o /tmp/comment_resp.json -w "%{http_code}" -X POST \
 echo "commit comment HTTP $CODE"
 cat /tmp/comment_resp.json 2>/dev/null || true
 rm -f "$TMP"
+
+# Fallback that needs no token permissions: workflow-command annotations are
+# visible through the checks API.
+tail -n 30 "$LOG" | while IFS= read -r line; do
+    esc=$(printf '%s' "$line" | sed -e 's/%/%25/g' -e 's/\r/%0D/g')
+    echo "::error title=gradle log ($LABEL)::$esc"
+done
