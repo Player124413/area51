@@ -118,3 +118,23 @@ Select the **Xbox** branch and follow the instructions.
 - **Snapshot Date:** The source code is a snapshot from 2005-03-31 10:40:19, just before the game's official release.
 - **Discovery:** It was found at a garage sale of a former THQ developer.
 - **Contents:** This release includes the source code for the Entropy engine, game logic, and targets for PC, PS2, Xbox, and an early version for GameCube. Additionally, debug symbols for various platforms are available in the release. Assets are not included, but those can be recovered from the retail game files.
+
+## Android Port
+
+An Android layer lives in [`android/`](android/): a launcher for importing the
+retail game data (`.dfs` archives and splits), a full touch-controls overlay with
+an in-app layout editor (move / resize / hide buttons), a device-profile driven
+performance governor for stable FPS on any phone, and a GitHub Actions workflow
+that builds installable APKs (see
+[`.github/workflows/android-build.yml`](.github/workflows/android-build.yml)).
+
+The native core (DFS reader, CRC16, input, perf governor, JSON, touch layout) is
+plain C++17 and is covered by host unit tests:
+
+```
+bash android/native-tests/run_tests.sh
+bash android/native-tests/check_android_sources.sh
+```
+
+Details, usage and honest limitations are documented in
+[`android/README.md`](android/README.md).

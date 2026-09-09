@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Area 51</string>
+    <string name="app_subtitle">Android runtime</string>
+
+    <!-- Launcher -->
+    <string name="launcher_empty_title">No game data yet</string>
+    <string name="launcher_empty_body">Copy the Area 51 game files (the contents of the DVD folder) to your phone, then import them here.</string>
+    <string name="action_import">Import files</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_play">Play</string>
+    <string name="action_files">Files</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_edit_layout">Edit controls</string>
+    <string name="action_refresh">Refresh</string>
+    <string name="library_header">Installed game data</string>
+    <string name="device_header">Device</string>
+    <string name="delete_confirm_title">Delete game data?</string>
+    <string name="delete_confirm_body">%1$s will be removed from this device (%2$s).</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="deleted">Deleted</string>
+
+    <!-- Import -->
+    <string name="import_title">Import game data</string>
+    <string name="import_pick_folder">Choose folder with game files</string>
+    <string name="import_pick_files">Receive shared files</string>
+    <string name="import_manual_hint">…or type the full path, e.g. /sdcard/A51/DVD</string>
+    <string name="import_manual_open">Open path</string>
+    <string name="import_scanning">Scanning…</string>
+    <string name="import_no_archives">No .dfs archives found in this folder.</string>
+    <string name="import_found">Found %1$d archive(s), %2$s</string>
+    <string name="import_start">Import selected</string>
+    <string name="import_copying">Copying %1$s…</string>
+    <string name="import_done">Imported %1$s (%2$s)</string>
+    <string name="import_failed">Import failed: %1$s</string>
+    <string name="import_no_space">Not enough free space: %1$s needed, %2$s available.</string>
+    <string name="import_name_hint">Name for this game data set</string>
+    <string name="import_permission_denied">Cannot read that folder.</string>
+    <string name="import_shared_received">Received %1$d file(s)</string>
+
+    <!-- Archive browser -->
+    <string name="archive_title">Archive contents</string>
+    <string name="archive_info">%1$d files, %2$d splits, version %3$d</string>
+    <string name="archive_verify">Verify checksums</string>
+    <string name="archive_verify_ok">All %1$d checked chunks are fine</string>
+    <string name="archive_verify_bad">%1$d of %2$d chunks are damaged</string>
+    <string name="archive_verify_none">This archive has no checksum table</string>
+    <string name="archive_load_more">Load more</string>
+    <string name="archive_preview">Preview</string>
+    <string name="archive_open_failed">Cannot open this archive: %1$s</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_touch_header">Touch controls</string>
+    <string name="settings_touch_enabled">Touch controls</string>
+    <string name="settings_touch_enabled_sum">Turn off to play with a controller, a keyboard or a mouse</string>
+    <string name="settings_touch_edit">Edit button layout</string>
+    <string name="settings_touch_edit_sum">Move, resize and hide buttons</string>
+    <string name="settings_deadzone">Stick dead zone</string>
+    <string name="settings_look_sensitivity">Look sensitivity</string>
+    <string name="settings_invert_y">Invert vertical look</string>
+    <string name="settings_look_enabled">Drag to look</string>
+
+    <string name="settings_perf_header">Performance</string>
+    <string name="settings_target_fps">Target frame rate</string>
+    <string name="settings_auto_quality">Adaptive quality</string>
+    <string name="settings_auto_quality_sum">Automatically lowers resolution and effects to keep the frame rate stable</string>
+    <string name="settings_quality_ceiling">Maximum quality</string>
+    <string name="settings_fixed_scale">Fixed render scale</string>
+    <string name="settings_fixed_scale_sum">0 = automatic</string>
+    <string name="settings_show_hud">Show performance HUD</string>
+    <string name="settings_thermal">React to overheating</string>
+    <string name="settings_thermal_sum">Back off before the phone starts throttling</string>
+
+    <string name="settings_device_header">Device</string>
+    <string name="settings_device_tier">Performance tier</string>
+    <string name="settings_apply">Apply</string>
+
+    <!-- Game / HUD -->
+    <string name="hud_fps">FPS</string>
+    <string name="hud_scale">Scale</string>
+    <string name="hud_quality">Quality</string>
+    <string name="hud_stability">Stability</string>
+    <string name="hud_thermal">Thermal</string>
+    <string name="game_paused">Paused</string>
+    <string name="game_resume">Resume</string>
+    <string name="game_restart">Restart</string>
+    <string name="game_quit">Quit</string>
+    <string name="game_no_data">No game data selected</string>
+    <string name="game_gl_failed">OpenGL initialisation failed</string>
+
+    <!-- Layout editor -->
+    <string name="edit_mode">Edit mode</string>
+    <string name="edit_size">Size</string>
+    <string name="edit_opacity">Opacity</string>
+    <string name="edit_visible">Visible</string>
+    <string name="edit_hidden">Hidden</string>
+    <string name="edit_style">Style</string>
+    <string name="edit_reset_control">Reset button</string>
+    <string name="edit_reset_all">Reset all</string>
+    <string name="edit_show_all">Show all</string>
+    <string name="edit_hide_all">Hide all</string>
+    <string name="edit_save">Save</string>
+    <string name="edit_cancel">Cancel</string>
+    <string name="edit_hint">Drag a button to move it, drag the small knob to resize it</string>
+    <string name="edit_saved">Layout saved</string>
+    <string name="edit_touch_off">Touch controls are off</string>
+
+    <string name="thermal_none">Normal</string>
+    <string name="thermal_light">Warm</string>
+    <string name="thermal_moderate">Hot</string>
+    <string name="thermal_severe">Overheating</string>
+    <string name="thermal_critical">Critical heat</string>
+
+    <string name="tier_low">Low</string>
+    <string name="tier_medium">Medium</string>
+    <string name="tier_high">High</string>
+    <string name="tier_flagship">Flagship</string>
+
+    <string name="ok">OK</string>
+    <string name="error_generic">Something went wrong</string>
+
+</resources>

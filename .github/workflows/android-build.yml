@@ -1,0 +1,119 @@
+# Builds the Android port and produces installable APKs.
+#
+# Jobs:
+#   native-tests   -> runs the C++ host unit tests (no SDK needed)
+#   unit-tests     -> runs the Kotlin JVM tests
+#   build-apk      -> assembles debug + release APKs, uploads them
+#   release        -> on a v* tag, attaches the APKs to a GitHub release
+#
+# The runner has no NDK by default, so this installs the exact versions the
+# project pins (NDK 26.1.10909125, CMake 3.22.1).
+
+name: Android Build
+
+on:
+  push:
+    branches: ["**"]
+    tags: ["v*"]
+    paths:
+      - "android/**"
+      - ".github/workflows/android-build.yml"
+  pull_request:
+    paths:
+      - "android/**"
+  workflow_dispatch:
+
+jobs:
+  # =========================================================================
+  native-tests:
+    name: C++ host unit tests
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run native host tests
+        run: bash android/native-tests/run_tests.sh
+
+      - name: Type check Android-only sources (JNI + GLES)
+        run: bash android/native-tests/check_android_sources.sh
+
+  # =========================================================================
+  unit-tests:
+    name: Kotlin unit tests
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.7"
+
+      - name: Run JVM unit tests
+        working-directory: android
+        run: gradle :app:testDebugUnitTest --no-daemon --stacktrace
+
+  # =========================================================================
+  build-apk:
+    name: Assemble APKs
+    runs-on: ubuntu-24.04
+    needs: [native-tests]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      # SDK + licences.
+      - name: Install Android SDK
+        uses: android-actions/setup-android@v3
+
+      # The exact toolchain the project pins.
+      - name: Install NDK + CMake
+        run: |
+          sdkmanager --install "ndk;26.1.10909125" "cmake;3.22.1" "platform-tools" >/dev/null
+
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.7"
+
+      - name: Assemble debug + release
+        working-directory: android
+        run: gradle :app:assembleDebug :app:assembleRelease --no-daemon
+
+      - name: Collect APKs
+        run: |
+          mkdir -p artifacts
+          find android/app/build/outputs/apk -name "*.apk" -exec cp {} artifacts/ \;
+          ls -la artifacts
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: area51-android-apks
+          path: artifacts/*.apk
+          if-no-files-found: error
+
+  # =========================================================================
+  release:
+    name: Publish release (tags only)
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-24.04
+    needs: [build-apk, unit-tests]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: area51-android-apks
+          path: artifacts
+
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: artifacts/*.apk
+          generate_release_notes: true

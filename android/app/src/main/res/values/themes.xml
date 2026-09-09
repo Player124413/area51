@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.A51" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/a51_amber</item>
+        <item name="colorOnPrimary">@color/bg_deep</item>
+        <item name="colorSecondary">@color/a51_cyan</item>
+        <item name="colorSurface">@color/bg_panel</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+        <item name="android:colorBackground">@color/bg_deep</item>
+        <item name="android:windowBackground">@color/bg_deep</item>
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+        <item name="android:statusBarColor">@color/bg_deep</item>
+        <item name="android:navigationBarColor">@color/bg_deep</item>
+    </style>
+
+    <style name="Theme.A51.Fullscreen" parent="Theme.A51">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowActionBar">false</item>
+    </style>
+
+    <style name="A51.Title" parent="TextAppearance.Material3.HeadlineSmall">
+        <item name="android:textColor">@color/a51_amber</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">0.08</item>
+    </style>
+
+    <style name="A51.Subtitle" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:textColor">@color/text_secondary</item>
+    </style>
+
+    <style name="A51.Section" parent="TextAppearance.Material3.LabelLarge">
+        <item name="android:textColor">@color/a51_cyan</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:letterSpacing">0.12</item>
+    </style>
+
+    <style name="A51.Button" parent="Widget.Material3.Button">
+        <item name="android:textColor">@color/bg_deep</item>
+        <item name="backgroundTint">@color/a51_amber</item>
+    </style>
+
+    <style name="A51.Button.Secondary" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:textColor">@color/a51_cyan</item>
+        <item name="strokeColor">@color/stroke_soft</item>
+    </style>
+
+</resources>
