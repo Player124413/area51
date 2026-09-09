@@ -86,7 +86,10 @@ class GameGLView @JvmOverloads constructor(
             NativeBridge.nativeBeginFrame()
 
             val cpuStartNs = System.nanoTime()
-            NativeBridge.nativeGlDrawFrame((frameStartNs - startTimeNs) / 1_000_000_000f, dtMs)
+            NativeBridge.nativeGlDrawFrame(
+                (frameStartNs - startTimeNs) / 1_000_000_000f,
+                dtMs / 1000f
+            )
             val cpuMs = (System.nanoTime() - cpuStartNs) / 1_000_000f
 
             // The governor sees the *whole* frame, including the time the
