@@ -73,6 +73,8 @@ jobs:
           echo '```' >> "$GITHUB_STEP_SUMMARY"
           tail -n 150 gradle.log >> "$GITHUB_STEP_SUMMARY"
           echo '```' >> "$GITHUB_STEP_SUMMARY"
+          BODY=$(tail -n 120 gradle.log | python3 -c 'import json,sys; print(json.dumps("gradle log tail:\n```\n" + sys.stdin.read() + "\n```"))')
+          curl -sS -X POST "https://api.github.com/repos/$GITHUB_REPOSITORY/commits/$GITHUB_SHA/comments"             -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}"             -H "Accept: application/vnd.github+json"             -d "{"body": $BODY}" || true
 
   # =========================================================================
   build-apk:
@@ -113,6 +115,8 @@ jobs:
           echo '```' >> "$GITHUB_STEP_SUMMARY"
           tail -n 150 gradle.log >> "$GITHUB_STEP_SUMMARY"
           echo '```' >> "$GITHUB_STEP_SUMMARY"
+          BODY=$(tail -n 120 gradle.log | python3 -c 'import json,sys; print(json.dumps("gradle log tail:\n```\n" + sys.stdin.read() + "\n```"))')
+          curl -sS -X POST "https://api.github.com/repos/$GITHUB_REPOSITORY/commits/$GITHUB_SHA/comments"             -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}"             -H "Accept: application/vnd.github+json"             -d "{"body": $BODY}" || true
 
       - name: Collect APKs
         run: |
