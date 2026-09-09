@@ -62,7 +62,17 @@ jobs:
 
       - name: Run JVM unit tests
         working-directory: android
-        run: gradle :app:testDebugUnitTest --no-daemon --stacktrace
+        run: |
+          set -o pipefail
+          gradle :app:testDebugUnitTest --no-daemon --stacktrace --console=plain 2>&1 | tee gradle.log
+
+      - name: Log tail on failure
+        if: failure()
+        working-directory: android
+        run: |
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          tail -n 150 gradle.log >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
 
   # =========================================================================
   build-apk:
@@ -92,7 +102,17 @@ jobs:
 
       - name: Assemble debug + release
         working-directory: android
-        run: gradle :app:assembleDebug :app:assembleRelease --no-daemon
+        run: |
+          set -o pipefail
+          gradle :app:assembleDebug :app:assembleRelease --no-daemon --console=plain 2>&1 | tee gradle.log
+
+      - name: Log tail on failure
+        if: failure()
+        working-directory: android
+        run: |
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          tail -n 150 gradle.log >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
 
       - name: Collect APKs
         run: |
