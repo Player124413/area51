@@ -11,16 +11,24 @@
 
 name: Android Build
 
+# The failure-log step posts the gradle log tail as a commit comment so it can
+# be read back through the REST API.
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
 on:
   push:
     branches: ["**"]
     tags: ["v*"]
     paths:
       - "android/**"
-      - ".github/workflows/android-build.yml"
+      - ".github/**"
   pull_request:
     paths:
       - "android/**"
+      - ".github/**"
   workflow_dispatch:
 
 jobs:
@@ -69,12 +77,9 @@ jobs:
       - name: Log tail on failure
         if: failure()
         working-directory: android
-        run: |
-          echo '```' >> "$GITHUB_STEP_SUMMARY"
-          tail -n 150 gradle.log >> "$GITHUB_STEP_SUMMARY"
-          echo '```' >> "$GITHUB_STEP_SUMMARY"
-          BODY=$(tail -n 120 gradle.log | python3 -c 'import json,sys; print(json.dumps("gradle log tail:\n```\n" + sys.stdin.read() + "\n```"))')
-          curl -sS -X POST "https://api.github.com/repos/$GITHUB_REPOSITORY/commits/$GITHUB_SHA/comments"             -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}"             -H "Accept: application/vnd.github+json"             -d "{"body": $BODY}" || true
+        env:
+          JOB_NAME: ${{ github.job }}
+        run: bash ../.github/scripts/post_log.sh gradle.log "$JOB_NAME"
 
   # =========================================================================
   build-apk:
@@ -111,12 +116,9 @@ jobs:
       - name: Log tail on failure
         if: failure()
         working-directory: android
-        run: |
-          echo '```' >> "$GITHUB_STEP_SUMMARY"
-          tail -n 150 gradle.log >> "$GITHUB_STEP_SUMMARY"
-          echo '```' >> "$GITHUB_STEP_SUMMARY"
-          BODY=$(tail -n 120 gradle.log | python3 -c 'import json,sys; print(json.dumps("gradle log tail:\n```\n" + sys.stdin.read() + "\n```"))')
-          curl -sS -X POST "https://api.github.com/repos/$GITHUB_REPOSITORY/commits/$GITHUB_SHA/comments"             -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}"             -H "Accept: application/vnd.github+json"             -d "{"body": $BODY}" || true
+        env:
+          JOB_NAME: ${{ github.job }}
+        run: bash ../.github/scripts/post_log.sh gradle.log "$JOB_NAME"
 
       - name: Collect APKs
         run: |
