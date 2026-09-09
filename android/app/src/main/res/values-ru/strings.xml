@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Area 51</string>
+    <string name="app_subtitle">Android-рантайм</string>
+
+    <!-- Launcher -->
+    <string name="launcher_empty_title">Игровых файлов пока нет</string>
+    <string name="launcher_empty_body">Скопируйте файлы игры Area 51 (содержимое папки DVD) на телефон, а затем импортируйте их здесь.</string>
+    <string name="action_import">Импорт файлов</string>
+    <string name="action_settings">Настройки</string>
+    <string name="action_play">Играть</string>
+    <string name="action_files">Файлы</string>
+    <string name="action_delete">Удалить</string>
+    <string name="action_edit_layout">Настройка кнопок</string>
+    <string name="action_refresh">Обновить</string>
+    <string name="library_header">Установленные игровые данные</string>
+    <string name="device_header">Устройство</string>
+    <string name="delete_confirm_title">Удалить игровые данные?</string>
+    <string name="delete_confirm_body">%1$s будет удалено с устройства (%2$s).</string>
+    <string name="action_cancel">Отмена</string>
+    <string name="deleted">Удалено</string>
+
+    <!-- Import -->
+    <string name="import_title">Импорт игровых данных</string>
+    <string name="import_pick_folder">Выбрать папку с файлами игры</string>
+    <string name="import_pick_files">Принять переданные файлы</string>
+    <string name="import_manual_hint">…или введите полный путь, например /sdcard/A51/DVD</string>
+    <string name="import_manual_open">Открыть путь</string>
+    <string name="import_scanning">Сканирование…</string>
+    <string name="import_no_archives">В этой папке не найдено ни одного архива .dfs.</string>
+    <string name="import_found">Найдено архивов: %1$d, %2$s</string>
+    <string name="import_start">Импортировать выбранное</string>
+    <string name="import_copying">Копирование %1$s…</string>
+    <string name="import_done">Импортировано %1$s (%2$s)</string>
+    <string name="import_failed">Ошибка импорта: %1$s</string>
+    <string name="import_no_space">Недостаточно места: нужно %1$s, доступно %2$s.</string>
+    <string name="import_name_hint">Название для этого набора данных</string>
+    <string name="import_permission_denied">Не удалось прочитать эту папку.</string>
+    <string name="import_shared_received">Получено файлов: %1$d</string>
+
+    <!-- Archive browser -->
+    <string name="archive_title">Содержимое архива</string>
+    <string name="archive_info">Файлов: %1$d, частей: %2$d, версия %3$d</string>
+    <string name="archive_verify">Проверить контрольные суммы</string>
+    <string name="archive_verify_ok">Все проверенные блоки (%1$d) в порядке</string>
+    <string name="archive_verify_bad">Повреждено блоков: %1$d из %2$d</string>
+    <string name="archive_verify_none">В этом архиве нет таблицы контрольных сумм</string>
+    <string name="archive_load_more">Загрузить ещё</string>
+    <string name="archive_preview">Просмотр</string>
+    <string name="archive_open_failed">Не удалось открыть архив: %1$s</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Настройки</string>
+    <string name="settings_touch_header">Сенсорное управление</string>
+    <string name="settings_touch_enabled">Сенсорное управление</string>
+    <string name="settings_touch_enabled_sum">Выключите, чтобы играть с геймпада, клавиатуры или мыши</string>
+    <string name="settings_touch_edit">Настройка расположения кнопок</string>
+    <string name="settings_touch_edit_sum">Перемещение, размер и видимость кнопок</string>
+    <string name="settings_deadzone">Мёртвая зона стика</string>
+    <string name="settings_look_sensitivity">Чувствительность обзора</string>
+    <string name="settings_invert_y">Инвертировать обзор по вертикали</string>
+    <string name="settings_look_enabled">Обзор перетаскиванием</string>
+
+    <string name="settings_perf_header">Производительность</string>
+    <string name="settings_target_fps">Целевая частота кадров</string>
+    <string name="settings_auto_quality">Адаптивное качество</string>
+    <string name="settings_auto_quality_sum">Автоматически снижает разрешение и эффекты, чтобы держать стабильный FPS</string>
+    <string name="settings_quality_ceiling">Максимальное качество</string>
+    <string name="settings_fixed_scale">Фиксированный масштаб рендера</string>
+    <string name="settings_fixed_scale_sum">0 = автоматически</string>
+    <string name="settings_show_hud">Показывать HUD производительности</string>
+    <string name="settings_thermal">Реагировать на перегрев</string>
+    <string name="settings_thermal_sum">Снижать нагрузку до того, как телефон начнёт троттлить</string>
+
+    <string name="settings_device_header">Устройство</string>
+    <string name="settings_device_tier">Класс производительности</string>
+    <string name="settings_apply">Применить</string>
+
+    <!-- Game / HUD -->
+    <string name="hud_fps">FPS</string>
+    <string name="hud_scale">Масштаб</string>
+    <string name="hud_quality">Качество</string>
+    <string name="hud_stability">Стабильность</string>
+    <string name="hud_thermal">Нагрев</string>
+    <string name="game_paused">Пауза</string>
+    <string name="game_resume">Продолжить</string>
+    <string name="game_restart">Заново</string>
+    <string name="game_quit">Выйти</string>
+    <string name="game_no_data">Игровые данные не выбраны</string>
+    <string name="game_gl_failed">Не удалось инициализировать OpenGL</string>
+
+    <!-- Layout editor -->
+    <string name="edit_mode">Режим настройки</string>
+    <string name="edit_size">Размер</string>
+    <string name="edit_opacity">Прозрачность</string>
+    <string name="edit_visible">Видна</string>
+    <string name="edit_hidden">Скрыта</string>
+    <string name="edit_style">Стиль</string>
+    <string name="edit_reset_control">Сбросить кнопку</string>
+    <string name="edit_reset_all">Сбросить всё</string>
+    <string name="edit_show_all">Показать все</string>
+    <string name="edit_hide_all">Скрыть все</string>
+    <string name="edit_save">Сохранить</string>
+    <string name="edit_cancel">Отмена</string>
+    <string name="edit_hint">Перетащите кнопку, чтобы переместить; тяните за маленький кружок, чтобы изменить размер</string>
+    <string name="edit_saved">Раскладка сохранена</string>
+    <string name="edit_touch_off">Сенсорное управление выключено</string>
+
+    <string name="thermal_none">Норма</string>
+    <string name="thermal_light">Тепло</string>
+    <string name="thermal_moderate">Горячо</string>
+    <string name="thermal_severe">Перегрев</string>
+    <string name="thermal_critical">Критический нагрев</string>
+
+    <string name="tier_low">Слабое</string>
+    <string name="tier_medium">Среднее</string>
+    <string name="tier_high">Высокое</string>
+    <string name="tier_flagship">Флагман</string>
+
+    <string name="ok">ОК</string>
+    <string name="error_generic">Что-то пошло не так</string>
+
+</resources>

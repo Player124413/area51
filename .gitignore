@@ -524,3 +524,14 @@ _XboxRetail/
 !xCore/Tools/xbmpTool.exe
 Apps/EDRscDesc/_Win32Release/EDRscDesc.lib
 
+
+# Android / Gradle build artifacts
+.gradle/
+.kotlin/
+.idea/
+local.properties
+android/.gradle/
+android/build/
+android/app/build/
+android/app/.cxx/
+android/native-tests/build/
